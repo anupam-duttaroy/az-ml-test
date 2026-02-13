@@ -14,9 +14,9 @@ jobs:
     inputs:
       training_data: ${{parent.inputs.training_data}}
       n_estimators: ${{parent.inputs.n_estimators}}
-    environment: 
-      image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04
-      conda_file: ../environment/conda.yml
+    environment:
+      build:
+         path: ../environment 
     compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
 
 inputs:
