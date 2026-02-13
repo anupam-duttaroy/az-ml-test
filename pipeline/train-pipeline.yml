@@ -1,24 +1,12 @@
-$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
-type: pipeline
-display_name: qa-training-pipeline
-experiment_name: quality-assurance
-
-jobs:
-  train_step:
-    type: command
-    code: ../src
-    command: >-
-      python train.py 
-      --training_data ${{inputs.training_data}} 
-      --n_estimators ${{inputs.n_estimators}}
-    inputs:
-      training_data: ${{parent.inputs.training_data}}
-      n_estimators: ${{parent.inputs.n_estimators}}
-    environment:
-      build:
-         path: ../environment 
-    compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
-
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+command: |
+  echo "hello world"
+  python train.py --training_data ${{inputs.training_data}} --n_estimators ${{inputs.n_estimators}}
+code: ../src
+environment: azureml:AzureML-frap-sklearn-1.0-ubuntu20.04-py38-cpu:latest
+compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
+experiment_name: test-experiment
+description: A simple command job
 inputs:
   training_data: 
     type: uri_file

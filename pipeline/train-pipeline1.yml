@@ -1,0 +1,26 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+display_name: qa-training-pipeline
+experiment_name: quality-assurance
+
+jobs:
+  train_step:
+    type: command
+    code: ../src
+    command: >-
+      python train.py 
+      --training_data ${{inputs.training_data}} 
+      --n_estimators ${{inputs.n_estimators}}
+    inputs:
+      training_data: ${{parent.inputs.training_data}}
+      n_estimators: ${{parent.inputs.n_estimators}}
+    environment: 
+      image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04
+      conda_file: ../environment/conda.yml
+    compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
+
+inputs:
+  training_data: 
+    type: uri_file
+    path: azureml:qa-dataset@latest
+  n_estimators: 100
