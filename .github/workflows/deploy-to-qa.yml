@@ -19,7 +19,7 @@ jobs:
         run: az extension add -n ml
 
       - name: Register Data
-        run: az ml data create --file data/dataset.yml --resource-group my-qa-rg --workspace-name my-qa-workspace
+        run: az ml data create --file data/dataset.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai
 
       - name: Submit Job
         run: 
@@ -30,5 +30,5 @@ jobs:
       - name: Set Schedule
         run: 
           az ml schedule create --file pipeline/schedule.yml \
-            --resource-group my-qa-rg \
-            --workspace-name my-qa-workspace
+            --resource-group CASH-CLEARING \
+            --workspace-name cash-clearing-ai
