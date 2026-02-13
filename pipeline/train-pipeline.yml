@@ -1,5 +1,4 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
-name: test-command-job
 command: |
   echo "hello world"
   python train.py --training_data ${{inputs.training_data}} --n_estimators ${{inputs.n_estimators}}
