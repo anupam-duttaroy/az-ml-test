@@ -9,10 +9,10 @@ from dateutil import parser
 
 def main():
     # 1. Parse Arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--training_data", type=str, help="Path to training data")
-    parser.add_argument("--n_estimators", type=int, default=100)
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("--training_data", type=str, help="Path to training data")
+    # parser.add_argument("--n_estimators", type=int, default=100)
+    # args = parser.parse_args()
 
     print(f"Training data path: {args.training_data}")
     print(f"Number of estimators: {args.n_estimators}")
