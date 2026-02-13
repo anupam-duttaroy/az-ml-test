@@ -3,6 +3,4 @@ name: weekly_qa_retrain
 trigger:
   type: cron
   expression: "*/10 * * * *"     # Every 10 minutes for testing
-create_job: 
-  type: pipeline
-  pipeline: ./train-pipeline.yml
+job: ./train-pipeline.yml
