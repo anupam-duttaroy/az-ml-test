@@ -14,8 +14,8 @@ def main():
     # parser.add_argument("--n_estimators", type=int, default=100)
     # args = parser.parse_args()
 
-    print(f"Training data path: {args.training_data}")
-    print(f"Number of estimators: {args.n_estimators}")
+    # print(f"Training data path: {args.training_data}")
+    # print(f"Number of estimators: {args.n_estimators}")
 
     dt = parser.parse("2026-02-14 10:30")
     print("Parsed date:", dt)
