@@ -1,0 +1,5 @@
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
+name: qa-dataset
+description: "Input data for QA testing"
+type: uri_file
+path: ./my_local_data.csv

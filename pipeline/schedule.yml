@@ -1,0 +1,6 @@
+$schema: https://azuremlschemas.azureedge.net/latest/schedule.schema.json
+name: weekly_qa_retrain
+trigger:
+  type: cron
+  expression: "0 9 * * 1" # 9:00 AM every Monday
+create_job: ./train-pipeline.yml
