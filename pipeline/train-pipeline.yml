@@ -12,6 +12,6 @@ inputs:
 environment: 
   build:
     path: ../environment
-compute: azureml:cash-clearing-ai-compute
+compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
 display_name: qa-training-run
 experiment_name: quality-assurance
