@@ -24,8 +24,8 @@ jobs:
       - name: Submit Job
         run: 
           az ml job create --file pipeline/train-pipeline.yml \
-            --resource-group my-qa-rg \
-            --workspace-name my-qa-workspace
+            --resource-group CASH-CLEARING \
+            --workspace-name cash-clearing-ai
 
       - name: Set Schedule
         run: 
