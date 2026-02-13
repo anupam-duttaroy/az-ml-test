@@ -1,9 +1,12 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+name: test-command-job
 command: |
   echo "hello world"
   python train.py --training_data ${{inputs.training_data}} --n_estimators ${{inputs.n_estimators}}
 code: ../src
-environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest
+environment: 
+  image: azureml://registries/azureml/environments/sklearn-1.5/labels/latest
+  conda_file: ../environment/conda.yml
 compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
 experiment_name: test-experiment
 description: A simple command job
