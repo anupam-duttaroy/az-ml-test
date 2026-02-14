@@ -3,10 +3,6 @@ type: pipeline
 display_name: step-pipeline
 experiment_name: test-experiment
 
-# --- GLOBAL SETTINGS (Shared by all steps) ---
-compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
-environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest
-
 # Pass the Key Vault URL to ALL steps at once
 # environment_variables:
 #   KEY_VAULT_URL: "https://cashclearingai6551529325.vault.azure.net/"
@@ -27,7 +23,8 @@ jobs:
     outputs:
       processed_data: 
         type: uri_folder
-    # Notice: No 'environment' or 'compute' needed here!
+    compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
+    environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest
     command: >-
       echo "hello world - Step 1: Preprocessing"
       pip install -r requirements.txt
@@ -39,6 +36,9 @@ jobs:
     inputs:
       training_data: ${{parent.jobs.step1_prep.outputs.processed_data}}
       n_estimators: ${{parent.inputs.n_estimators}}
+    compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
+    environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest  
     command: >-
       echo "hello world - Step 2: Training"
+      pip install -r requirements.txt
       python train.py --training_data ${{inputs.training_data}} --n_estimators ${{inputs.n_estimators}}
