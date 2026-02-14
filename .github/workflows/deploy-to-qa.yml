@@ -18,8 +18,8 @@ jobs:
       - name: Install Azure ML CLI
         run: az extension add -n ml
 
-      - name: Register Environment
-        run: az ml environment create --file environment/environment.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai  
+      # - name: Register Environment
+      #   run: az ml environment create --file environment/environment.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai  
 
       - name: Register Data
         run: az ml data create --file data/dataset.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai
