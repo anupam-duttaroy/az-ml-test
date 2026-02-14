@@ -23,7 +23,7 @@ jobs:
 
       - name: Submit Job
         run: 
-          az ml job create --file pipeline/train-pipeline.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai --set name=test-job${{ github.run_number }}
+          az ml job create --file pipeline/new-pipeline.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai --set name=test-job${{ github.run_number }}
 
 #      - name: Set Schedule
 #        run: 

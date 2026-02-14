@@ -3,3 +3,5 @@
     pandas
     mlflow
     python-dateutil
+    azure-identity
+    azure-keyvault-secrets

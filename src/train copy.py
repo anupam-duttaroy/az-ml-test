@@ -6,6 +6,9 @@ import argparse
 # from sklearn.ensemble import RandomForestRegressor
 # from sklearn.model_selection import train_test_split
 from dateutil import parser
+from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
+
 
 def main():
     # 1. Parse Arguments
@@ -18,8 +21,24 @@ def main():
     # print(f"Number of estimators: {args.n_estimators}")
 
     dt = parser.parse("2026-02-14 10:30")
-    print("Parsed date from training step:", dt)
+    print("Parsed date:", dt)
     
+    import os
+
+    # 1. Provide the Vault URL (can be passed via environment variable)
+    vault_url = os.environ.get("KEY_VAULT_URL", "https://cashclearingai6551529325.vault.azure.net/")
+
+    # 2. Use the Managed Identity automatically
+    credential = DefaultAzureCredential()
+
+    # 3. Connect to the client
+    client = SecretClient(vault_url=vault_url, credential=credential)
+
+    # 4. Pull your DB credentials
+    test_val = client.get_secret("test-secret").value
+    
+
+    print(f"Successfully retrieved test value: {test_val}")
     # 2. Start MLflow (Azure ML tracks this automatically)
     # mlflow.autolog()
     
