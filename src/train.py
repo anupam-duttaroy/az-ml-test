@@ -1,24 +1,27 @@
 import argparse
-# from html import parser
-# import os
-# import pandas as pd
+from html import parser
+import os
+import pandas as pd
 # import mlflow
 # from sklearn.ensemble import RandomForestRegressor
 # from sklearn.model_selection import train_test_split
-from dateutil import parser
+from dateutil import parser as date_parser
 
 def main():
     # 1. Parse Arguments
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("--training_data", type=str, help="Path to training data")
-    # parser.add_argument("--n_estimators", type=int, default=100)
-    # args = parser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--training_data", type=str, help="Path to training data")
+    parser.add_argument("--n_estimators", type=int, default=100)
+    args = parser.parse_args()
 
-    # print(f"Training data path: {args.training_data}")
-    # print(f"Number of estimators: {args.n_estimators}")
+    print(f"Training data path: {args.training_data}")
+    print(f"Number of estimators: {args.n_estimators}")
 
-    dt = parser.parse("2026-02-14 10:30")
+    dt = date_parser.parse("2026-02-14 10:30")
     print("Parsed date from training step:", dt)
+
+    df = pd.read_csv(args.training_data)
+    print(df.head())
     
     # 2. Start MLflow (Azure ML tracks this automatically)
     # mlflow.autolog()
