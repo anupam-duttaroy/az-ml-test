@@ -24,7 +24,7 @@ jobs:
       processed_data: 
         type: uri_folder
     compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
-    environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest
+    environment: azureml:test-qa-env@latest
     command: |
       echo "hello world - Step 1: Preprocessing"
       pip install -r requirements.txt
@@ -37,7 +37,7 @@ jobs:
       training_data: ${{parent.inputs.training_data}}
       n_estimators: ${{parent.inputs.n_estimators}}
     compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
-    environment: azureml://registries/azureml/environments/sklearn-1.5/labels/latest  
+    environment: azureml:test-qa-env@latest  
     command: |
       echo "hello world - Step 2: Training"
       pip install -r requirements.txt
