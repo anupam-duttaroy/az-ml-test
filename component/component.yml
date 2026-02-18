@@ -1,0 +1,13 @@
+# <component>
+$schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
+name: test-component
+display_name: testcomponentaz
+version: 1
+type: command
+code: ../src/component-test
+compute: azureml:CASH-CLEARING-COMPUTE-CLUSTER
+environment: azureml:test-qa-env@latest
+command: |
+  echo "hello world - Test Component"
+  python testkv.py
+# </component>

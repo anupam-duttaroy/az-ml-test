@@ -3,7 +3,7 @@ type: pipeline
 display_name: step-pipeline
 experiment_name: test-experiment
 
-# Pass the Key Vault URL to ALL steps at once
+
 # environment_variables:
 #   KEY_VAULT_URL: "https://cashclearingai6551529325.vault.azure.net/"
 
@@ -13,7 +13,7 @@ inputs:
     path: azureml:qa-dataset@latest
   n_estimators: 100
 
-# --- THE JOBS ---
+
 jobs:
   step1_prep:
     type: command

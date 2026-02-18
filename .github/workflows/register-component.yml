@@ -1,0 +1,36 @@
+name: Azure ML Component Registration
+on:
+  push:
+    branches: [ component-registration ]
+
+jobs:
+  deploy-to-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Install Azure ML CLI
+        run: az extension add -n ml
+
+      - name: Register Component
+        run: az ml component create --file component/component.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai
+
+      # - name: Register Environment
+      #   run: az ml environment create --file environment/environment.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai  
+
+      # - name: Register Data
+      #   run: az ml data create --file data/dataset.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai
+
+      # - name: Submit Job
+      #   run: 
+      #     az ml job create --file pipeline/new-pipeline.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai --set name=test-job${{ github.run_number }}
+
+#      - name: Set Schedule
+#        run: 
+#          az ml schedule create --file pipeline/schedule.yml --resource-group CASH-CLEARING --workspace-name cash-clearing-ai
