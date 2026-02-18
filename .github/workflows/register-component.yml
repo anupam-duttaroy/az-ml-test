@@ -4,7 +4,7 @@ on:
     branches: [ component-registration ]
 
 jobs:
-  deploy-to-qa:
+  component-registration:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
