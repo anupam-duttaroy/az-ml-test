@@ -1,0 +1,10 @@
+name: test-runner-simple
+on: workflow_dispatch
+
+jobs:
+  execute-win-runner:
+    runs-on: test-runner-win11
+    steps:
+      - name: first-step
+        run: echo "This is a test - step 1"
+        
