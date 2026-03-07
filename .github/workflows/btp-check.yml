@@ -51,7 +51,7 @@ jobs:
           --user "${{ secrets.BTP_USERNAME }}" \
           --password "${{ secrets.BTP_PASSWORD }}"
           
-          btp target --sa fba26302-a141-4971-8972-b0d5a0303b5e
+          btp target -sa fba26302-a141-4971-8972-b0d5a0303b5e
 
           btp target
           
