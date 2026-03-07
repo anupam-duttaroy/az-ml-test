@@ -1,0 +1,13 @@
+name: btp-check
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '*/2 4-14 * * *' 
+
+jobs:
+  btp-check:
+    runs-on: test-runner-win11
+    steps:
+      - name: Check BTP status - before
+        run: btp --version
+        continue-on-error: true
