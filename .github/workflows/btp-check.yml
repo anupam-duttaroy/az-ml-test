@@ -15,7 +15,10 @@ jobs:
       
       - name: Checkout repo
         uses: actions/checkout@v4
-        
+
+      - name: Check BTP status - before
+        run: btp --version
+
       - name: Copy file file to temp folder
         run: |
           mkdir -p temp_dir
@@ -33,5 +36,5 @@ jobs:
           ls
           sudo cp btp /usr/local/bin/
 
-      - name: Check BTP status
+      - name: Check BTP status - after
         run: btp --version
