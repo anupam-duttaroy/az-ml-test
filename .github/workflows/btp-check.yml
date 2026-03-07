@@ -45,12 +45,16 @@ jobs:
 
       - name: Login to BTP and set target
         run: |
-          btp login --url https://cli.btp.cloud.sap/ \
+          btp login \
+          --url https://cli.btp.cloud.sap/ \
           --subdomain 8f2644e5trial-ga \
-          --user ${{ secrets.BTP_USERNAME }} \
-          --password ${{ secrets.BTP_PASSWORD }}
+          --user "${{ secrets.BTP_USERNAME }}" \
+          --password "${{ secrets.BTP_PASSWORD }}"
+          
           btp target --sa fba26302-a141-4971-8972-b0d5a0303b5e
-       
+
+          btp target
+          
       - name: Start HANA Cloud Instance
         run: |
           btp update services/instance --id 619b1619-51dd-4aa5-96a1-b4990e71ac8f \
