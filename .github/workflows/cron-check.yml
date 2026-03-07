@@ -1,4 +1,4 @@
-name: btp-check
+name: cron-check
 on: 
   workflow_dispatch:
   schedule:
