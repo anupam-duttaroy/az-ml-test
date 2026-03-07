@@ -1,5 +1,8 @@
 name: btp-check
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 4-9 * * *' 
 
 jobs:
   btp-check:
