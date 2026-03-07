@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@v4 
+        uses: Homebrew/actions/setup-homebrew@master
   
       - name: Check brew version and install a package
         run: |
