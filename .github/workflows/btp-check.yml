@@ -1,0 +1,23 @@
+name: btp-check
+on: workflow_dispatch
+
+jobs:
+  btp-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        
+      - name: Copy file file to temp folder
+        run: |
+          mkdir -p temp_dir
+          cp ./btp-cli-linux-amd64-2.97.0.tar.gz temp_dir/
+
+      - name: Unzip 
+        run: |
+          tar -xzf temp_dir/btp-cli-linux-amd64-2.97.0.tar.gz -C temp_dir/
+
+      - name: Check status
+        run: |
+          cd temp_dir
+          ls
