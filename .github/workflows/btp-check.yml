@@ -6,7 +6,7 @@ on:
 
 jobs:
   btp-check:
-    runs-on: ubuntu-latest
+    runs-on: test-runner-win11
     steps:
       # - name: Set up Homebrew
       #   uses: Homebrew/actions/setup-homebrew@master
