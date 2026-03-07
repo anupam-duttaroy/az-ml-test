@@ -5,13 +5,13 @@ jobs:
   btp-check:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+      # - name: Set up Homebrew
+      #   uses: Homebrew/actions/setup-homebrew@master
   
-      - name: Check brew version and install a package
-        run: |
-          brew --version # This will now work
-          brew install --cask btp
+      # - name: Check brew version and install a package
+      #   run: |
+      #     brew --version # This will now work
+      #     brew install --cask btp
       
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -31,6 +31,7 @@ jobs:
           ls
           cd linux-amd64
           ls
+          sudp cp btp /usr/local/bin/
 
       - name: Check BTP status
         run: btp --version
