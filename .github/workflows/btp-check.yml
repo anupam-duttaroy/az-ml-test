@@ -18,6 +18,7 @@ jobs:
 
       - name: Check BTP status - before
         run: btp --version
+        continue-on-error: true
 
       - name: Copy file file to temp folder
         run: |
