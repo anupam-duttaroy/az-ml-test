@@ -5,6 +5,14 @@ jobs:
   btp-check:
     runs-on: ubuntu-latest
     steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@v4 
+  
+      - name: Check brew version and install a package
+        run: |
+          brew --version # This will now work
+          brew install --cask btp
+      
       - name: Checkout repo
         uses: actions/checkout@v4
         
@@ -17,7 +25,12 @@ jobs:
         run: |
           tar -xzf temp_dir/btp-cli-linux-amd64-2.97.0.tar.gz -C temp_dir/
 
-      - name: Check status
+      - name: Check unzip status
         run: |
           cd temp_dir
           ls
+          cd linux-amd64
+          ls
+
+      - name: Check BTP status
+        run: btp --version
