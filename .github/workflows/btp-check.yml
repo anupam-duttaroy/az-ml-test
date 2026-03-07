@@ -20,22 +20,25 @@ jobs:
         run: btp --version
         continue-on-error: true
 
-      - name: Copy file file to temp folder
-        run: |
-          mkdir -p temp_dir
-          cp ./btp-cli-linux-amd64-2.97.0.tar.gz temp_dir/
+      - name: Install BTP CLI via script
+        run: curl https://cli.btp.cloud.sap/btpcli-install.sh | bash
+        
+      # - name: Copy file file to temp folder
+      #   run: |
+      #     mkdir -p temp_dir
+      #     cp ./btp-cli-linux-amd64-2.97.0.tar.gz temp_dir/
 
-      - name: Unzip 
-        run: |
-          tar -xzf temp_dir/btp-cli-linux-amd64-2.97.0.tar.gz -C temp_dir/
+      # - name: Unzip 
+      #   run: |
+      #     tar -xzf temp_dir/btp-cli-linux-amd64-2.97.0.tar.gz -C temp_dir/
 
-      - name: Check unzip status
-        run: |
-          cd temp_dir
-          ls
-          cd linux-amd64
-          ls
-          sudo cp btp /usr/local/bin/
+      # - name: Check unzip status
+      #   run: |
+      #     cd temp_dir
+      #     ls
+      #     cd linux-amd64
+      #     ls
+      #     sudo cp btp /usr/local/bin/
 
       - name: Check BTP status - after
         run: btp --version
